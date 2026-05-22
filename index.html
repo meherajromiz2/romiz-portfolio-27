@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Services – Meheraj Romiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Poppins',sans-serif;
+  color:#0f172a;
+  background-color: #1040a8;
+  background-image: none;
+  background-attachment: fixed;
+}
+
+/* TOPBAR */
+.topbar {
+  background:linear-gradient(135deg,#1040a8,#1a56db,#2563eb);
+  padding:14px 24px; display:flex; align-items:center; gap:14px;
+}
+.topbar a { color:rgba(255,255,255,.8); text-decoration:none; font-size:.85rem; display:flex; align-items:center; gap:6px; }
+.topbar a:hover { color:#fff; }
+.topbar .sep { color:rgba(255,255,255,.3); }
+.topbar .cur { color:#fff; font-weight:600; font-size:.85rem; }
+
+/* HERO */
+.hero {
+  background: #1040a8;
+  padding:60px 24px 90px; text-align:center; position:relative; overflow:hidden;
+}
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background:none;
+}
+@keyframes bgShift { from{background-position:0 0} to{background-position:60px 60px} }
+.hero::after {
+  content:''; position:absolute; inset:0;
+  background: none;
+}
+.hero-inner { position:relative; z-index:2; max-width:700px; margin:0 auto; }
+.hero-icon {
+  width:80px; height:80px; background:rgba(255,255,255,.15);
+  border-radius:22px; display:flex; align-items:center; justify-content:center;
+  margin:0 auto 22px; font-size:2.2rem; backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.25); animation:popIn .6s ease both;
+}
+@keyframes popIn { from{opacity:0;transform:scale(.7)} to{opacity:1;transform:scale(1)} }
+.hero h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,5vw,3.4rem);
+  color:#fff; font-weight:900; animation:fadeDown .7s .1s ease both;
+}
+.hero p {
+  color:rgba(255,255,255,.85); font-size:clamp(.9rem,2vw,1.1rem);
+  margin-top:12px; max-width:580px; margin-left:auto; margin-right:auto;
+  line-height:1.7; animation:fadeDown .7s .2s ease both;
+}
+@keyframes fadeDown { from{opacity:0;transform:translateY(-16px)} to{opacity:1;transform:none} }
+.badge-row {
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+  margin-top:22px; animation:fadeDown .7s .3s ease both;
+}
+.badge {
+  background:rgba(255,255,255,.15); color:#fff; font-size:.78rem; font-weight:600;
+  padding:6px 15px; border-radius:20px; border:1px solid rgba(255,255,255,.3);
+  backdrop-filter:blur(8px);
+}
+
+/* TAB NAV */
+.tab-nav-wrap {
+  max-width:960px; margin:-36px auto 0; padding:0 20px;
+  position:relative; z-index:10;
+}
+.tab-nav {
+  display:flex; background:rgba(255,255,255,0.95); border-radius:18px;
+  box-shadow:0 8px 40px rgba(0,0,0,.35); overflow:hidden;
+}
+.tab-btn {
+  flex:1; padding:18px 10px; border:none; background:transparent;
+  font-family:'Poppins',sans-serif; font-weight:600; font-size:.9rem;
+  cursor:pointer; transition:all .25s; color:#64748b;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  border-bottom:3px solid transparent;
+}
+.tab-btn .t-icon { font-size:1.4rem; }
+.tab-btn:hover { color:#0f172a; background:#f8fafc; }
+.tab-btn.active { color:#fff; border-bottom-color:transparent; }
+.tab-btn.active.on  { background:linear-gradient(135deg,#1a56db,#2563eb); }
+.tab-btn.active.off { background:linear-gradient(135deg,#7c3aed,#8b5cf6); }
+.tab-btn.active.tec { background:linear-gradient(135deg,#0891b2,#06b6d4); }
+
+/* TAB PANELS */
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+
+/* SECTION WRAPPER */
+.section-wrap { max-width:960px; margin:0 auto; padding:50px 20px; }
+.section-wrap > * { position: relative; z-index: 1; }
+
+/* Glass panel behind content */
+.tab-panel.active .section-wrap {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 24px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.2);
+}
+
+.section-title {
+  font-size:clamp(1.4rem,3vw,2rem); font-weight:800; margin-bottom:8px;
+}
+.section-title.on  { color:#1a56db; }
+.section-title.off { color:#7c3aed; }
+.section-title.tec { color:#0891b2; }
+
+.section-sub { color:#64748b; font-size:.92rem; margin-bottom:36px; max-width:580px; }
+
+/* PRICING GRID */
+.pricing-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px; margin-bottom:50px;
+}
+.plan-card {
+  background:#fff; border-radius:20px; padding:30px 24px;
+  box-shadow:0 4px 24px rgba(0,0,0,.15); border:2px solid #e2e8f0;
+  transition:transform .2s,box-shadow .2s; position:relative; overflow:hidden;
+}
+.plan-card:hover { transform:translateY(-6px); box-shadow:0 14px 44px rgba(0,0,0,.13); }
+.plan-card.popular { border-color:#1a56db; transform:scale(1.03); }
+.plan-card.popular.purple { border-color:#7c3aed; }
+.plan-card.popular.teal   { border-color:#0891b2; }
+.plan-card.popular:hover  { transform:scale(1.03) translateY(-6px); }
+
+.popular-badge {
+  position:absolute; top:14px; right:14px;
+  font-size:.68rem; font-weight:700; letter-spacing:.8px;
+  padding:4px 12px; border-radius:20px; text-transform:uppercase; color:#fff;
+}
+.pb-blue   { background:linear-gradient(135deg,#1a56db,#2563eb); }
+.pb-purple { background:linear-gradient(135deg,#7c3aed,#8b5cf6); }
+.pb-teal   { background:linear-gradient(135deg,#0891b2,#06b6d4); }
+
+.plan-name { font-size:.78rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#94a3b8; margin-bottom:8px; }
+.plan-price { font-size:2.4rem; font-weight:900; color:#0f172a; line-height:1; }
+.plan-price span { font-size:1rem; font-weight:500; color:#94a3b8; }
+.plan-desc { font-size:.78rem; color:#94a3b8; margin:6px 0 20px; }
+.plan-features { list-style:none; margin-bottom:22px; }
+.plan-features li {
+  display:flex; align-items:flex-start; gap:10px;
+  font-size:.84rem; color:#334155; padding:7px 0; border-bottom:1px solid #f1f5f9;
+}
+.plan-features li:last-child { border:none; }
+.check { flex-shrink:0; margin-top:1px; }
+.ck-blue   { color:#16a34a; }
+.ck-purple { color:#7c3aed; }
+.ck-teal   { color:#0891b2; }
+.cross { color:#dc2626; flex-shrink:0; margin-top:1px; }
+
+.plan-btn {
+  display:block; width:100%; padding:13px; border-radius:50px;
+  font-family:'Poppins',sans-serif; font-weight:700; font-size:.9rem;
+  text-align:center; text-decoration:none; border:none; cursor:pointer;
+  transition:transform .18s,box-shadow .18s;
+}
+.plan-btn:hover { transform:translateY(-2px); }
+.btn-blue   { background:linear-gradient(135deg,#1a56db,#2563eb); color:#fff; box-shadow:0 6px 18px rgba(26,86,219,.35); }
+.btn-blue:hover   { box-shadow:0 10px 26px rgba(26,86,219,.5); }
+.btn-purple { background:linear-gradient(135deg,#7c3aed,#8b5cf6); color:#fff; box-shadow:0 6px 18px rgba(124,58,237,.35); }
+.btn-purple:hover { box-shadow:0 10px 26px rgba(124,58,237,.5); }
+.btn-teal   { background:linear-gradient(135deg,#0891b2,#06b6d4); color:#fff; box-shadow:0 6px 18px rgba(8,145,178,.35); }
+.btn-teal:hover   { box-shadow:0 10px 26px rgba(8,145,178,.5); }
+.btn-outline-blue   { background:#fff; color:#1a56db; border:2px solid #1a56db; }
+.btn-outline-blue:hover   { background:#eff6ff; }
+.btn-outline-purple { background:#fff; color:#7c3aed; border:2px solid #7c3aed; }
+.btn-outline-purple:hover { background:#faf5ff; }
+.btn-outline-teal   { background:#fff; color:#0891b2; border:2px solid #0891b2; }
+.btn-outline-teal:hover   { background:#ecfeff; }
+
+/* WHAT'S INCLUDED CARDS */
+.what-title {
+  font-size:clamp(1.2rem,2.5vw,1.6rem); font-weight:800; margin-bottom:20px;
+}
+.what-title.on  { color:#1a56db; }
+.what-title.off { color:#7c3aed; }
+.what-title.tec { color:#0891b2; }
+.what-title::after {
+  content:''; display:block; width:44px; height:4px; border-radius:2px; margin-top:8px;
+}
+.wt-on::after  { background:linear-gradient(90deg,#1a56db,#06b6d4); }
+.wt-off::after { background:linear-gradient(90deg,#7c3aed,#e85d04); }
+.wt-tec::after { background:linear-gradient(90deg,#0891b2,#7c3aed); }
+
+.includes-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:14px; }
+.inc-item {
+  background:#fff; border-radius:14px; padding:18px;
+  box-shadow:0 2px 12px rgba(0,0,0,.1);
+  display:flex; align-items:flex-start; gap:12px;
+  border-left:3px solid transparent;
+  transition:transform .18s, box-shadow .18s;
+}
+.inc-item:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,.1); }
+.inc-on   { border-color:#1a56db; }
+.inc-off  { border-color:#7c3aed; }
+.inc-tec  { border-color:#0891b2; }
+.inc-icon { font-size:1.4rem; flex-shrink:0; }
+.inc-text { font-size:.82rem; color:#334155; font-weight:500; line-height:1.4; }
+
+/* CTA BOTTOM */
+.cta-bottom {
+  background:linear-gradient(135deg,#0f172a,#1e293b);
+  padding:50px 20px; text-align:center;
+}
+.cta-bottom h2 { color:#fff; font-size:clamp(1.3rem,3vw,1.9rem); font-weight:800; margin-bottom:8px; }
+.cta-bottom p  { color:rgba(255,255,255,.6); font-size:.92rem; margin-bottom:28px; }
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+.btn-wa {
+  display:inline-flex; align-items:center; gap:9px; padding:13px 28px;
+  border-radius:50px; font-family:'Poppins',sans-serif; font-weight:700; font-size:.92rem;
+  text-decoration:none; background:linear-gradient(135deg,#25d366,#128c7e); color:#fff;
+  box-shadow:0 6px 20px rgba(37,211,102,.35); transition:transform .18s,box-shadow .18s;
+}
+.btn-wa:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(37,211,102,.5); }
+.btn-em {
+  display:inline-flex; align-items:center; gap:9px; padding:13px 28px;
+  border-radius:50px; font-family:'Poppins',sans-serif; font-weight:700; font-size:.92rem;
+  text-decoration:none; background:linear-gradient(135deg,#e85d04,#f97316); color:#fff;
+  box-shadow:0 6px 20px rgba(232,93,4,.35); transition:transform .18s,box-shadow .18s;
+}
+.btn-em:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(232,93,4,.5); }
+
+@media(max-width:600px) {
+  .tab-btn { font-size:.78rem; padding:14px 6px; }
+  .tab-btn .t-icon { font-size:1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a href="portfolio.html">← Back to Portfolio</a>
+  <span class="sep">/</span>
+  <span class="cur">SEO Services</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-icon">⚙️</div>
+    <h1>SEO Services</h1>
+    <p>Complete search engine optimization — On-Page, Off-Page & Technical — to rank your website higher, drive organic traffic, and grow your business consistently.</p>
+    <div class="badge-row">
+      <span class="badge">On-Page SEO</span>
+      <span class="badge">Off-Page SEO</span>
+      <span class="badge">Technical SEO</span>
+      <span class="badge">Google Search Console</span>
+      <span class="badge">Ahrefs & SEMrush</span>
+    </div>
+  </div>
+</div>
+
+<!-- TAB NAV -->
+<div class="tab-nav-wrap">
+  <div class="tab-nav">
+    <button class="tab-btn on active" onclick="switchTab('on', this)">
+      <span class="t-icon">📝</span>
+      On-Page SEO
+    </button>
+    <button class="tab-btn off" onclick="switchTab('off', this)">
+      <span class="t-icon">🔗</span>
+      Off-Page SEO
+    </button>
+    <button class="tab-btn tec" onclick="switchTab('tec', this)">
+      <span class="t-icon">🛠️</span>
+      Technical SEO
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ON-PAGE SEO
+══════════════════════════════════════ -->
+<div id="panel-on" class="tab-panel active">
+  <div class="section-wrap">
+    <h2 class="section-title on">On-Page SEO</h2>
+    <p class="section-sub">Optimize every element on your website — titles, headings, content, images, and URLs — so Google understands and ranks your pages.</p>
+
+    <div class="pricing-grid">
+      <!-- Starter -->
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$59 <span>/ mo</span></div>
+        <div class="plan-desc">Best for new websites</div>
+        <ul class="plan-features">
+          <li><span class="check ck-blue">✓</span> 5 Pages Optimized</li>
+          <li><span class="check ck-blue">✓</span> Title & Meta Tags</li>
+          <li><span class="check ck-blue">✓</span> Heading Structure (H1–H6)</li>
+          <li><span class="check ck-blue">✓</span> Image Alt Text Fixes</li>
+          <li><span class="cross">✗</span> Keyword Mapping</li>
+          <li><span class="cross">✗</span> Internal Linking</li>
+          <li><span class="cross">✗</span> Content Optimization</li>
+        </ul>
+        <a href="https://wa.me/8801866039814" target="_blank" class="plan-btn btn-outline-blue">Get Started</a>
+      </div>
+
+      <!-- Growth (Popular) -->
+      <div class="plan-card popular">
+        <div class="popular-badge pb-blue">⭐ Most Popular</div>
+        <div class="plan-name">Growth</div>
+        <div class="plan-price">$119 <span>/ mo</span></div>
+        <div class="plan-desc">Best for growing websites</div>
+        <ul class="plan-features">
+          <li><span class="check ck-blue">✓</span> 15 Pages Optimized</li>
+          <li><span class="check ck-blue">✓</span> Title, Meta & URL Optimization</li>
+          <li><span class="check ck-blue">✓</span> Full Heading Structure Fix</li>
+          <li><span class="check ck-blue">✓</span> Keyword Mapping per Page</li>
+          <li><span class="check ck-blue">✓</span> Image Alt & Compression</li>
+          <li><span class="check ck-blue">✓</span> Internal Linking Strategy</li>
+          <li><span class="check ck-blue">✓</span> Monthly Report</li>
+        </ul>
+        <a href="https://wa.me/8801866039814" target="_blank" class="plan-btn btn-blue">Get Started</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="plan-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$219 <span>/ mo</span></div>
+        <div class="plan-desc">Best for established businesses</div>
+        <ul class="plan-features">
+          <li><span class="check ck-blue">✓</span> Unlimited Pages</li>
+          <li><span class="check ck-blue">✓</span> Full On-Page Audit & Fix</li>
+          <li><span class="check ck-blue">✓</span> Deep Keyword Mapping</li>
+          <li><span class="check ck-blue">✓</span> Content Gap Analysis</li>
+          <li><span class="check ck-blue">✓</span> Advanced Internal Linking</li>
+          <li><span class="check ck-blue">✓</span> Yoast / RankMath Setup</li>
+          <li><span class="check ck-blue">✓</span> Weekly Reports + Strategy Call</li>
+        </ul>
+        <a href="https://wa.me/8801866039814" target="_blank" class="plan-btn btn-outline-blue">Get Started</a>
+      </div>
+    </div>
+
+    <!-- Includes -->
+    <h3 class="what-title on wt-on">What's Included in On-Page SEO</h3>
+    <div class="includes-grid">
+      <div class="inc-item inc-on"><span class="inc-icon">🔑</span><span class="inc-text">Keyword Research & Mapping</span></div>
+      <div class="inc-item inc-on"><span class="inc-icon">📝</span><span class="inc-text">Title Tag Optimization</span></div>
+      <div class="inc-item inc-on"><span class="inc-icon">📋</span><span class="inc-text">Meta Description Writing</span></div>
+      <div class="inc-item inc-on"><span class="inc-icon">🏗️</span><span class="inc-text">Heading Structure (H1–H6)</span></div>
+      <div class="inc-item inc-on"><span class="inc-icon">🖼️</span><span class="inc-text">Image Alt Text & Compression</span></div>
+      <div class="inc-item inc-on"><span class="inc-icon">🔗</span><span class="inc-text">Internal Linking Strategy</span></div>
+      <div class="inc-item inc-on"><span class="inc-icon">🌐</span><span class="inc-text">URL Structure Optimization</span></div>
+      <div class="inc-item inc-on"><span class="inc-icon">📊</span><span class="inc-text">Monthly SEO Report</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     OFF-PAGE SEO
+══════════════════════════════════════ -->
+<div id="panel-off" class="tab-panel">
+  <div class="section-wrap">
+    <h2 class="section-title off">Off-Page SEO</h2>
+    <p class="section-sub">Build your website's authority and trust through high-quality backlinks, social signals, and strategic link-building campaigns.</p>
+
+    <div class="pricing-grid">
+      <!-- Starter -->
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$69 <span>/ mo</span></div>
+        <div class="plan-desc">Best for new websites</div>
+        <ul class="plan-features">
+          <li><span class="check ck-purple">✓</span> 10 Profile Backlinks</li>
+          <li><span class="check ck-purple">✓</span> 5 Blog Comment Links</li>
+          <li><span class="check ck-purple">✓</span> Social Bookmarking (5 sites)</li>
+          <li><span class="check ck-purple">✓</span> Backlink Report</li>
+          <li><span class="cross">✗</span> Wiki Backlinks</li>
+          <li><span class="cross">✗</span> Guest Posting</span></li>
+          <li><span class="cross">✗</span> Forum & Q&A Links</span></li>
+        </ul>
+        <a href="https://wa.me/8801866039814" target="_blank" class="plan-btn btn-outline-purple">Get Started</a>
+      </div>
+
+      <!-- Growth (Popular) -->
+      <div class="plan-card popular purple">
+        <div class="popular-badge pb-purple">⭐ Most Popular</div>
+        <div class="plan-name">Growth</div>
+        <div class="plan-price">$139 <span>/ mo</span></div>
+        <div class="plan-desc">Best for growing websites</div>
+        <ul class="plan-features">
+          <li><span class="check ck-purple">✓</span> 30 Profile Backlinks</li>
+          <li><span class="check ck-purple">✓</span> 15 Blog Comment Links</li>
+          <li><span class="check ck-purple">✓</span> Social Bookmarking (15 sites)</li>
+          <li><span class="check ck-purple">✓</span> Wiki Backlinks (5)</li>
+          <li><span class="check ck-purple">✓</span> Forum & Q&A Links</li>
+          <li><span class="check ck-purple">✓</span> 1 Guest Post Outreach</li>
+          <li><span class="check ck-purple">✓</span> Monthly Backlink Report</li>
+        </ul>
+        <a href="https://wa.me/8801866039814" target="_blank" class="plan-btn btn-purple">Get Started</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="plan-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$249 <span>/ mo</span></div>
+        <div class="plan-desc">Best for authority building</div>
+        <ul class="plan-features">
+          <li><span class="check ck-purple">✓</span> 60+ High-DA Backlinks</li>
+          <li><span class="check ck-purple">✓</span> Full Link Building Strategy</li>
+          <li><span class="check ck-purple">✓</span> 3 Guest Post Placements</li>
+          <li><span class="check ck-purple">✓</span> Broken Link Building</li>
+          <li><span class="check ck-purple">✓</span> Competitor Backlink Analysis</li>
+          <li><span class="check ck-purple">✓</span> Toxic Link Disavow</li>
+          <li><span class="check ck-purple">✓</span> Weekly Reports + Call</li>
+        </ul>
+        <a href="https://wa.me/8801866039814" target="_blank" class="plan-btn btn-outline-purple">Get Started</a>
+      </div>
+    </div>
+
+    <!-- Includes -->
+    <h3 class="what-title off wt-off">What's Included in Off-Page SEO</h3>
+    <div class="includes-grid">
+      <div class="inc-item inc-off"><span class="inc-icon">🔗</span><span class="inc-text">Profile Backlinks</span></div>
+      <div class="inc-item inc-off"><span class="inc-icon">💬</span><span class="inc-text">Blog Comment Links</span></div>
+      <div class="inc-item inc-off"><span class="inc-icon">📌</span><span class="inc-text">Social Bookmarking</span></div>
+      <div class="inc-item inc-off"><span class="inc-icon">📖</span><span class="inc-text">Wiki Backlinks</span></div>
+      <div class="inc-item inc-off"><span class="inc-icon">🗣️</span><span class="inc-text">Forum & Q&A Posting</span></div>
+      <div class="inc-item inc-off"><span class="inc-icon">✍️</span><span class="inc-text">Guest Post Placements</span></div>
+      <div class="inc-item inc-off"><span class="inc-icon">🔍</span><span class="inc-text">Competitor Link Analysis</span></div>
+      <div class="inc-item inc-off"><span class="inc-icon">📊</span><span class="inc-text">Backlink Audit Report</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     TECHNICAL SEO
+══════════════════════════════════════ -->
+<div id="panel-tec" class="tab-panel">
+  <div class="section-wrap">
+    <h2 class="section-title tec">Technical SEO</h2>
+    <p class="section-sub">Fix all under-the-hood issues — site speed, crawlability, structured data, and Core Web Vitals — to give search engines a clear path to your content.</p>
+
+    <div class="pricing-grid">
+      <!-- Starter -->
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$79 <span>/ mo</span></div>
+        <div class="plan-desc">Best for new websites</div>
+        <ul class="plan-features">
+          <li><span class="check ck-teal">✓</span> Technical Site Audit</li>
+          <li><span class="check ck-teal">✓</span> Robots.txt Configuration</li>
+          <li><span class="check ck-teal">✓</span> XML Sitemap Setup</li>
+          <li><span class="check ck-teal">✓</span> Basic Page Speed Fix</li>
+          <li><span class="cross">✗</span> Schema / Structured Data</li>
+          <li><span class="cross">✗</span> Core Web Vitals Fix</li>
+          <li><span class="cross">✗</span> Google Search Console Setup</li>
+        </ul>
+        <a href="https://wa.me/8801866039814" target="_blank" class="plan-btn btn-outline-teal">Get Started</a>
+      </div>
+
+      <!-- Growth (Popular) -->
+      <div class="plan-card popular teal">
+        <div class="popular-badge pb-teal">⭐ Most Popular</div>
+        <div class="plan-name">Growth</div>
+        <div class="plan-price">$149 <span>/ mo</span></div>
+        <div class="plan-desc">Best for growing websites</div>
+        <ul class="plan-features">
+          <li><span class="check ck-teal">✓</span> Full Technical Audit & Fix</li>
+          <li><span class="check ck-teal">✓</span> Robots.txt & Sitemap</li>
+          <li><span class="check ck-teal">✓</span> Page Speed Optimization</li>
+          <li><span class="check ck-teal">✓</span> Schema / Structured Data</li>
+          <li><span class="check ck-teal">✓</span> Canonical Tag Fixes</li>
+          <li><span class="check ck-teal">✓</span> GSC + GA4 Setup</li>
+          <li><span class="check ck-teal">✓</span> Monthly Audit Report</li>
+        </ul>
+        <a href="https://wa.me/8801866039814" target="_blank" class="plan-btn btn-teal">Get Started</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="plan-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$279 <span>/ mo</span></div>
+        <div class="plan-desc">Best for serious rankings</div>
+        <ul class="plan-features">
+          <li><span class="check ck-teal">✓</span> Full Site Technical Overhaul</li>
+          <li><span class="check ck-teal">✓</span> Core Web Vitals Fix (LCP/CLS/FID)</li>
+          <li><span class="check ck-teal">✓</span> Advanced Schema Markup</li>
+          <li><span class="check ck-teal">✓</span> Crawl Budget Optimization</li>
+          <li><span class="check ck-teal">✓</span> Redirect Chain Cleanup</li>
+          <li><span class="check ck-teal">✓</span> GTM + GA4 Advanced Setup</li>
+          <li><span class="check ck-teal">✓</span> Weekly Reports + Strategy Call</li>
+        </ul>
+        <a href="https://wa.me/8801866039814" target="_blank" class="plan-btn btn-outline-teal">Get Started</a>
+      </div>
+    </div>
+
+    <!-- Includes -->
+    <h3 class="what-title tec wt-tec">What's Included in Technical SEO</h3>
+    <div class="includes-grid">
+      <div class="inc-item inc-tec"><span class="inc-icon">🔍</span><span class="inc-text">Full Technical Site Audit</span></div>
+      <div class="inc-item inc-tec"><span class="inc-icon">⚡</span><span class="inc-text">Page Speed Optimization</span></div>
+      <div class="inc-item inc-tec"><span class="inc-icon">🤖</span><span class="inc-text">Robots.txt & Sitemap Config</span></div>
+      <div class="inc-item inc-tec"><span class="inc-icon">🏗️</span><span class="inc-text">Schema / Structured Data</span></div>
+      <div class="inc-item inc-tec"><span class="inc-icon">📐</span><span class="inc-text">Core Web Vitals Fix</span></div>
+      <div class="inc-item inc-tec"><span class="inc-icon">🔗</span><span class="inc-text">Canonical & Redirect Fixes</span></div>
+      <div class="inc-item inc-tec"><span class="inc-icon">📊</span><span class="inc-text">GSC + GA4 Integration</span></div>
+      <div class="inc-item inc-tec"><span class="inc-icon">🛡️</span><span class="inc-text">HTTPS & Security Check</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BOTTOM -->
+<div class="cta-bottom">
+  <h2>Ready to Rank #1 on Google?</h2>
+  <p>Contact Meheraj Romiz today and let's build your SEO strategy together.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/8801866039814" target="_blank" class="btn-wa">📱 Hire Me on WhatsApp</a>
+    <a href="mailto:meherajromiz2@gmail.com" class="btn-em">✉️ Email Me</a>
+  </div>
+</div>
+
+<script>
+function switchTab(type, btn) {
+  // Hide all panels
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  // Remove active from all buttons
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  // Show selected
+  document.getElementById('panel-' + type).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
